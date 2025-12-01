@@ -255,7 +255,8 @@
         text-align: center;
     }
     .logo{
-        display: none;
+        display: block;
+        text-align: center;
     }
     .sub{
         display: block;
@@ -572,4 +573,397 @@
 /* Nút back to top (Giữ nguyên) */
 #back-to-top {
     font-size: 1.5rem;
+}
+
+
+
+
+/* ==================================== */
+/* INTRO SCREEN - HIỆU ỨNG MỞ THIỆP */
+/* ==================================== */
+
+/* Container màn hình giới thiệu */
+#intro-screen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; 
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 1.5s ease-out;
+}
+
+/* Các cánh cửa */
+.intro-door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--bg1); /* Màu nền thiệp: #2b0606 */
+    transition: transform 1.5s ease-in-out;
+    z-index: 2; /* Cao hơn nội dung */
+    overflow: hidden;
+}
+
+#intro-left-door {
+    left: 0;
+    transform-origin: left;
+}
+
+#intro-right-door {
+    right: 0;
+    transform-origin: right;
+}
+
+/* Trạng thái khi thiệp đã mở */
+#intro-left-door.open {
+    transform: translateX(-100%);
+}
+
+#intro-right-door.open {
+    transform: translateX(100%);
+}
+
+/* Chữ Song Hỷ (囍) */
+#song-hy-text {
+    position: absolute;
+    font-family: 'Ma Shan Zheng', cursive; 
+    font-size: 15vw; 
+    font-weight: bold;
+    color: #FFD700; /* Vàng Kim Sáng */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    z-index: 3; 
+    pointer-events: none;
+    white-space: nowrap;
+    display: flex;
+    transition: all 1.5s ease-in-out; 
+}
+
+/* Hiệu ứng tách chữ Song Hỷ */
+#song-hy-text.opened .song-hy-left {
+    transform: translateX(-30vw); 
+    opacity: 0; 
+}
+#song-hy-text.opened .song-hy-right {
+    transform: translateX(30vw); 
+    opacity: 0; 
+}
+
+/* Trang trí Rồng Phượng (Dùng CSS giả định) */
+/* **LƯU Ý: Bạn cần thay thế bằng hình ảnh Rồng/Phượng thực tế.** Tôi dùng màu Vàng Kim (#DAA520) để trang trí cho dễ hình dung. */
+.door-decoration {
+    position: absolute;
+    width: 60px; 
+    height: 60px;
+    background-color: #DAA520; /* Màu Vàng Kim */
+    border-radius: 50%; 
+    opacity: 0.8;
+    z-index: 4;
+}
+
+.door-decoration.top-left { top: 20px; left: 20px; }
+.door-decoration.bottom-left { bottom: 20px; left: 20px; }
+.door-decoration.top-right { top: 20px; right: 20px; }
+.door-decoration.bottom-right { bottom: 20px; right: 20px; }
+
+/* Nội dung intro (tên cô dâu chú rể) */
+.intro-content {
+    position: relative;
+    z-index: 10; 
+    text-align: center;
+    color: var(--accent); 
+    transform: translateY(20px);
+    transition: opacity 1s ease 1s, transform 1s ease 1s; 
+    margin-top: 50vh;
+}
+
+.intro-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-content h1 {
+    font-size: 3rem; 
+    color: #DAA520; /* Vàng kim cho tên */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    margin: 10px 0;
+}
+.date-pill-intro{
+    display:inline-block;
+    margin-top:14px;
+    background: rgba(255,255,255,0.1);
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:16px;
+    color: white;
+}
+#open-invitation {
+    /* Nút màu vàng kim */
+    background-color: #DAA520; 
+    color: #2b0606; 
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+#open-invitation:hover {
+    background-color: #FFD700;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    #song-hy-text {
+        font-size: 25vw; 
+    }
+    #song-hy-text.opened .song-hy-left {
+        transform: translateX(-50vw); 
+    }
+    #song-hy-text.opened .song-hy-right {
+        transform: translateX(50vw); 
+    }
+    .intro-content h1 {
+        font-size: 2.5rem;
+    }
+    .door-decoration {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* === STYLE CHO SECTION THÔNG TIN GIA ĐÌNH === */
+.family-info-section {
+    padding: 30px 20px;
+    margin-top: 30px;
+}
+
+.family-info-container {
+    display: flex; /* Bật Flexbox để chia cột */
+    justify-content: space-between; /* Đẩy hai cột ra hai bên */
+    align-items: flex-start; /* Căn trên cùng */
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Cột thông tin phụ huynh */
+.family-column {
+    width: 50%; /* Mỗi cột chiếm 50% */
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* Tiêu đề Phụ Huynh */
+.side-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    color: var(--accent); /* Sử dụng màu vàng kim */
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(218, 165, 32, 0.5); /* Đường gạch dưới nhẹ */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.parent-name {
+    font-size: 1.1em;
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.contact-line {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Tạo đường phân cách DỌC ở giữa 2 cột (sử dụng pseudo-element) */
+.family-info-container::after {
+    content: '';
+    position: absolute;
+    top: 15px; /* Căn chỉnh từ trên xuống */
+    bottom: 35px; /* Căn chỉnh từ dưới lên */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px; /* Chiều dày đường kẻ */
+    background-color: #ccc; /* Màu đường kẻ */
+}
+
+/* Đường phân cách NGANG (giữa các section) đã được định nghĩa là .separator-line */
+.gold-line {
+    border-top: 1px solid var(--accent);
+    margin: 20px auto 0;
+}
+.chantrongkm{
+  font-size: 15px;
+  text-align: center;
+}
+.chantrongkm.sec2{
+  display: block;
+  margin-top: 10px;
+}
+
+
+
+/* ==================================== */
+/* KHUNG THỜI GIAN THEO HÌNH ẢNH */
+/* ==================================== */
+
+.wedding-time-frame {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Quan trọng: kéo dài chiều cao các cột để đường kẻ đẹp */
+    max-width: 500px; /* Giới hạn độ rộng khung */
+    margin: 20px auto;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Khung viền nhẹ nhàng */
+    border-radius: 10px;
+    background: rgba(43, 6, 6, 0.5); /* Hơi tối hơn nền */
+}
+
+.time-column {
+    padding: 15px 10px;
+    text-align: center;
+    color: var(--accent);
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    display: flex; /* Dùng flex cho nội dung cột */
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Đường kẻ dọc phân cách */
+.time-column:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 1px;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Cột ngày trong tuần & năm */
+.day-column, .year-column {
+    flex-basis: 25%;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+/* Cột chính (Giữa) */
+.main-time-column {
+    flex-basis: 50%;
+    font-weight: 600;
+}
+
+.time-header {
+    font-size: 1.2em;
+    margin: 0 0 5px 0;
+    color: #FFD700; /* Vàng kim */
+}
+
+.date-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4em; /* Số 12 rất lớn */
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    color: #ffffff; /* Màu trắng cho số nổi bật */
+}
+
+.date-month {
+    font-size: 1.2em;
+    margin: 5px 0 0 0;
+}
+
+.lunar-date {
+    font-size: 0.8em;
+    margin: 8px 0 0 0;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 550px) {
+    .wedding-time-frame {
+        max-width: 90%;
+    }
+    .date-number {
+        font-size: 3em;
+    }
+    .time-header, .date-month {
+        font-size: 1em;
+    }
+}
+
+
+/* ==================================== */
+/* KHUNG THÔNG TIN ĐỊA ĐIỂM (Location Card) */
+/* ==================================== */
+
+.location-card {
+    background: linear-gradient(135deg, rgba(43, 6, 6, 0.9), rgba(65, 10, 10, 0.8)); /* Nền đỏ đen đậm */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Viền vàng kim nhẹ */
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.location-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.location-icon {
+    font-size: 1.5em;
+    color: #FFD700; /* Vàng kim */
+    margin-right: 10px;
+}
+
+.location-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #ffffff; /* Màu trắng nổi bật */
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.location-address {
+    font-size: 1em;
+    opacity: 0.9;
+    color: var(--accent);
+    margin: 5px 0 20px 0;
+}
+
+/* Nút Hành động nổi bật (XEM CHỈ ĐƯỜNG) */
+.action-btn.map-btn {
+    /* Thường thì nút này phải là màu đỏ hoặc màu vàng kim nổi bật */
+    background: linear-gradient(90deg, #D4AF37, #FFD700); /* Vàng kim đậm */
+    color: #2b0606; /* Chữ màu đỏ đen */
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn.map-btn:hover {
+    background: linear-gradient(90deg, #FFD700, #F7E7C4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
