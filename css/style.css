@@ -54,8 +54,8 @@
     color:var(--accent);
   }
   .title{
-    font-family:'Playfair Display', serif;
-    font-size:44px;
+    font-family: "My Soul", cursive;
+    font-size:48px;
     margin:8px 0;
     line-height:1;
     color:#fff;
@@ -966,4 +966,243 @@
     background: linear-gradient(90deg, #FFD700, #F7E7C4);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+#intro-screen-container{
+    position: relative;
+    width:100%;
+    height:100vh;
+    background:#2b0606;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Viền vàng kim */
+.gold-frame{
+    position:absolute;
+    inset:30px;
+    border:4px solid #d4a93b;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,200,80,0.4), inset 0 0 15px rgba(255,200,80,0.3);
+    pointer-events:none;
+}
+
+/* Trang trí góc */
+.decor{
+    position:absolute;
+    width:120px;
+    opacity:0.8;
+}
+
+.decor-tl { top:10px; left:10px; transform:rotate(0deg); }
+.decor-tr { top:10px; right:10px; transform:rotate(90deg); }
+.decor-bl { bottom:10px; left:10px; transform:rotate(270deg); }
+.decor-br { bottom:10px; right:10px; transform:rotate(180deg); }
+
+/* Song hỷ vàng kim 3D */
+.hy-main{
+    font-size:160px;
+    color:#ffd74d;
+    font-weight:900;
+}
+
+.hy-shadow{
+    font-size:160px;
+    color:rgba(0,0,0,0.3);
+    position:absolute;
+    transform:translate(8px,8px);
+    z-index:-1;
+}
+
+/* Cánh cửa mở thiệp */
+.intro-door{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:#2b0606;
+    transition:transform 1.2s ease-in-out;
+}
+
+#intro-left-door{ left:0; border-right:2px solid #d4a93b; }
+#intro-right-door{ right:0; border-left:2px solid #d4a93b; }
+
+/* Nút mở thiệp */
+.btn-open{
+    margin-top:20px;
+    background:#d4a93b;
+    border:none;
+    padding:12px 26px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(255,200,80,0.6);
+    transition:0.2s;
+}
+
+.btn-open:hover{
+    background:#ffdd66;
+    transform:scale(1.08);
+}
+
+/* Tên cô dâu chú rể */
+.couple-name{
+    color:#ffeedd;
+    font-size:32px;
+    font-family: "My Soul", cursive;
+    margin-top:20px;
+}
+
+/* Hiệu ứng ánh sáng */
+.shine{
+    position:absolute;
+    top:50%;
+    left:-200px;
+    width:180px;
+    height:700px;
+    background:linear-gradient(115deg,rgba(255,255,255,0.3),rgba(255,255,255,0));
+    transform:rotate(25deg);
+    animation:shineMove 3s infinite ease-in-out;
+}
+
+@keyframes shineMove {
+    0%{ left:-300px; }
+    100%{ left:120%; }
+}
+/* Mobile Responsive: màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+
+    /* Căn giữa toàn bộ intro */
+    #intro-screen-container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+         transform: translateY(-10vh);
+    }
+
+    /* Căn giữa text và nút */
+    .intro-content {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Chữ Song Hỷ */
+    #song-hy-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Nút mở thiệp */
+    #open-invitation {
+        margin: 0 ;
+        display: inline-block;
+    }
+
+    /* 2 cánh cửa tự thu nhỏ và căn giữa */
+    .intro-door {
+        width: 50%;
+        height: 50%;
+        top: 0;
+    }
+
+    /* Nếu cần cửa không bị lệch */
+    #intro-left-door,
+    #intro-right-door {
+        position: absolute;
+        top: 0;
+    }
+
+    /* Trang trí 4 góc thu nhỏ */
+    .door-decoration {
+        transform: scale(0.6);
+    }
+}
+
+
+
+/* ==================================== */
+/* ĐỒNG HỒ ĐẾM NGƯỢC (COUNTDOWN TIMER) */
+/* ==================================== */
+
+.countdown-section {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(139, 0, 0, 0.4); /* Đỏ sẫm trong suốt */
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Viền vàng kim */
+}
+
+.countdown-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    color: #FFD700; /* Vàng kim */
+    margin-bottom: 10px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 8px;
+    border-radius: 8px;
+    min-width: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.time-box span:first-child { /* Giá trị (Ngày, Giờ, Phút, Giây) */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.time-box .label { /* Nhãn (Ngày, Giờ, Phút, Giây) */
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-top: 5px;
+    color: var(--accent);
+}
+
+.countdown-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 550px) {
+    .countdown-timer {
+        gap: 10px;
+    }
+    .time-box {
+        min-width: 50px;
+        padding: 8px 5px;
+    }
+    .time-box span:first-child {
+        font-size: 1.4em;
+    }
+    .countdown-title {
+        font-size: 1.2em;
+    }
 }

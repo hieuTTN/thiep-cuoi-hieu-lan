@@ -1,49 +1,96 @@
 /* ---------------------------------------------------- */
 /* SNOW EFFECT (Chạy độc lập ngay lập tức)    */
 /* ---------------------------------------------------- */
-(function snowEffect(){
+(function snowEffect() {
     const canvas = document.getElementById('snow');
-    // Kiểm tra xem canvas có tồn tại không trước khi chạy
-    if (!canvas) return; 
-    
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     let w = canvas.width = innerWidth;
     let h = canvas.height = innerHeight;
-    const num = Math.floor((w*h)/8000); // density
+
+    const num = Math.floor((w * h) / 8000); // mật độ
     const flakes = [];
-    for(let i=0;i<num;i++){
+
+    for (let i = 0; i < num; i++) {
         flakes.push({
-            x: Math.random()*w,
-            y: Math.random()*h,
-            r: Math.random()*3+1,
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 3 + 2,   // bán kính
             d: Math.random() + Math.random(),
-            sx: (Math.random()*0.5)-0.25
+            sx: (Math.random() * 0.5) - 0.25,
+            rotate: Math.random() * 360,       // góc xoay
+            rotateSpeed: (Math.random() * 0.6) - 0.3 // tốc độ xoay
         });
     }
-    function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; }
+
+    function resize() {
+        w = canvas.width = innerWidth;
+        h = canvas.height = innerHeight;
+    }
     addEventListener('resize', resize);
 
-    let t=0;
-    function draw(){
-        ctx.clearRect(0,0,w,h);
-        ctx.globalCompositeOperation='lighter';
-        for(let i=0;i<flakes.length;i++){
+    let t = 0;
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < flakes.length; i++) {
             const f = flakes[i];
-            ctx.beginPath();
-            ctx.fillStyle = "rgba(255,255,255," + (0.6*Math.min(1,f.r/4)) + ")";
-            ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
-            ctx.fill();
+
+            // Xoay
+            f.rotate += f.rotateSpeed;
+
+            // Vẽ bông tuyết bánh răng
+            drawSnowflake(ctx, f.x, f.y, f.r, f.rotate);
+
+            // Rơi xuống
             f.y += Math.pow(f.d, 1.2) + 0.5;
-            f.x += Math.sin(t*0.5 + f.d) * 0.6 + f.sx;
-            if(f.y > h + 10){
+
+            // Gió đẩy ngang
+            f.x += Math.sin(t * 0.5 + f.d) * 0.6 + f.sx;
+
+            // Reset khi rơi xuống đáy
+            if (f.y > h + 10) {
                 f.y = -10;
-                f.x = Math.random()*w;
+                f.x = Math.random() * w;
             }
         }
+
         t += 0.02;
         requestAnimationFrame(draw);
     }
+
     draw();
+
+    // === HÀM VẼ BÔNG TUYẾT BÁNH RĂNG (6 cánh) === //
+    function drawSnowflake(ctx, x, y, r, rotation) {
+        const arms = 6;
+        const inner = r * 0.45;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation * Math.PI / 180);
+
+        ctx.beginPath();
+        for (let i = 0; i < arms * 2; i++) {
+            const angle = (Math.PI / arms) * i;
+            const radius = (i % 2 === 0) ? r : inner;
+            const px = Math.cos(angle) * radius;
+            const py = Math.sin(angle) * radius;
+
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+
+        ctx.closePath();
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = "rgba(255,255,255,0.8)";
+        ctx.fill();
+
+        ctx.restore();
+    }
+
 })();
 
 
@@ -231,4 +278,54 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+});
+
+document.getElementById("open-invitation").addEventListener("click", () => {
+    document.getElementById("intro-left-door").style.transform = "translateX(-100%)";
+    document.getElementById("intro-right-door").style.transform = "translateX(100%)";
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Ngày cưới: 20/12/2025 lúc 10:00:00 (có thể điều chỉnh giờ mời khách)
+    const WEDDING_DATE = new Date("Dec 20, 2025 10:00:00").getTime(); 
+    
+    const timerDays = document.getElementById('days');
+    const timerHours = document.getElementById('hours');
+    const timerMinutes = document.getElementById('minutes');
+    const timerSeconds = document.getElementById('seconds');
+    const countdownDiv = document.getElementById('countdown');
+    const countdownMsg = document.getElementById('countdownMessage');
+    let countdownInterval; 
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = WEDDING_DATE - now; 
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            // Hiển thị thông báo khi đã đến ngày cưới
+            if (countdownDiv) countdownDiv.style.display = 'none';
+            if (countdownMsg) countdownMsg.style.display = 'block';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Hàm định dạng số có 2 chữ số (ví dụ: 09, 10)
+        const formatTime = (time) => String(time).padStart(2, '0');
+
+        if (timerDays) timerDays.textContent = formatTime(days);
+        if (timerHours) timerHours.textContent = formatTime(hours);
+        if (timerMinutes) timerMinutes.textContent = formatTime(minutes);
+        if (timerSeconds) timerSeconds.textContent = formatTime(seconds);
+    }
+    
+    // Bắt đầu đếm ngược
+    updateCountdown(); 
+    countdownInterval = setInterval(updateCountdown, 1000); 
 });
