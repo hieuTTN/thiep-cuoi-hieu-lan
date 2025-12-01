@@ -477,3 +477,66 @@
     50% { transform: scale(1.3) rotate(-45deg); }
     100% { transform: scale(1) rotate(-45deg); }
 }
+
+/* ==================================== */
+/* CÁC NÚT ĐIỀU KHIỂN CỐ ĐỊNH */
+/* ==================================== */
+
+#fixed-controls {
+    position: fixed;
+    bottom: 20px;
+    /* Thay đổi vị trí từ 'left' sang 'right' */
+    right: 20px; 
+    left: auto; /* Thêm thuộc tính này để đảm bảo không bị xung đột với 'left' cũ */
+    /* ------------------------------------- */
+    z-index: 9999; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.control-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hình tròn */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1.2rem;
+}
+
+.control-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Biểu tượng cho nút nhạc */
+#music-toggle::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Mặc định: Hiển thị icon Phát (fa-play) hoặc Tắt tiếng (fa-volume-mute) */
+/* Nếu nhạc chưa phát (trước khi user click mở thiệp), ta để mặc định là Tắt tiếng */
+#music-toggle.muted::before {
+    content: "\f6a9"; /* icon fa-volume-mute */
+}
+
+#music-toggle:not(.muted)::before {
+    content: "\f028"; /* icon fa-volume-up */
+}
+
+/* Nút back to top */
+#back-to-top {
+    font-size: 1.5rem; /* Mũi tên lên */
+}
+
+/* Ẩn nút trở về đầu trang nếu chưa cuộn đủ */
+#back-to-top.show {
+    display: flex !important;
+}

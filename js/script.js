@@ -35,21 +35,8 @@ document.getElementById('openMapBride').addEventListener('click', ()=>{
 
 
 
-/* Music play/pause control */
-const bgm = document.getElementById('bgm');
-const playBtn = document.getElementById('playBtn');
-const pauseBtn = document.getElementById('pauseBtn');
 
 
-/* Optional: try autoplay (may be blocked) */
-window.addEventListener('load', ()=> {
-  // try muted autoplay to kickstart audio on some browsers then unmute on user action
-  bgm.muted = true;
-  bgm.play().then(()=> {
-    bgm.pause();
-    bgm.muted = false;
-  }).catch(()=>{/* ignored */});
-});
 
 /* Snow effect on canvas */
 (function snowEffect(){
@@ -97,4 +84,41 @@ window.addEventListener('load', ()=> {
 /* Small accessibility: keyboard close modal */
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') modal.classList.remove('open');
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const backgroundMusic = document.getElementById('background-music');
+    const musicToggleBtn = document.getElementById('music-toggle');
+    const backToTopBtn = document.getElementById('back-to-top');
+    backgroundMusic.muted = true;
+    musicToggleBtn.classList.add('muted');
+    musicToggleBtn.addEventListener('click', () => {
+        if (backgroundMusic.muted) {
+            // Unmute và Phát nhạc
+            backgroundMusic.muted = false;
+            backgroundMusic.play().catch(error => {
+                console.error("Lỗi khi cố gắng phát nhạc:", error);
+            });
+            musicToggleBtn.classList.remove('muted'); 
+        } else {
+            // Mute
+            backgroundMusic.muted = true;
+            musicToggleBtn.classList.add('muted'); 
+        }
+    });
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { 
+            backToTopBtn.style.display = 'flex';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+    });
 });
