@@ -284,6 +284,26 @@
         display:block;
         text-align: center;
     }
+    .map-buttons-container { 
+        display: flex; 
+        margin-top: 14px;
+        gap: 10px; 
+    }
+
+    .btn {
+        display: inline-block; 
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 50%; 
+        box-sizing: border-box; 
+    }
+
+    .map-buttons-container .btn {
+        flex: 1; 
+        width: auto; 
+    }
   }
 
   /* little decorative heart */
