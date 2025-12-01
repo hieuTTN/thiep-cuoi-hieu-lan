@@ -1,0 +1,479 @@
+  :root{
+    --bg1:#6b0f0f; /* maroon base */
+    --bg2:#2b0606;
+    --accent:#f6d6d6;
+    --card: rgba(255,255,255,0.06);
+    --glass: rgba(255,255,255,0.06);
+    --rounded: 16px;
+    --maxw:1100px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--accent);
+    background: linear-gradient(180deg,var(--bg1) 0%, #4b0a0a 40%, var(--bg2) 100%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+
+  /* container */
+  .wrap{
+    max-width:var(--maxw);
+    margin:36px auto;
+    padding:28px;
+    position:relative;
+  }
+
+  /* glass card */
+  .hero{
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius:24px;
+    padding:28px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+    display:flex;
+    gap:24px;
+    align-items:center;
+    flex-wrap:wrap;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* left column: hero text */
+  .hero-left{
+    flex:1 1 360px;
+    min-width:260px;
+  }
+  .logo{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    letter-spacing:1px;
+    color:var(--accent);
+  }
+  .title{
+    font-family:'Playfair Display', serif;
+    font-size:44px;
+    margin:8px 0;
+    line-height:1;
+    color:#fff;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  }
+  .sub{
+    opacity:0.9;
+    margin-top:6px;
+    font-size:14px;
+  }
+  .date-pill{
+    display:inline-block;
+    margin-top:14px;
+    background: rgba(255,255,255,0.06);
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:16px;
+  }
+
+  /* right col: photo */
+  .hero-right{
+    width:320px;
+    min-width:220px;
+    aspect-ratio: 4/5;
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+    flex:0 0 320px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));
+    border:1px solid rgba(255,255,255,0.04);
+  }
+  .hero-right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transform:scale(1.03);
+  }
+
+  /* sections */
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 380px;
+    gap:24px;
+    margin-top:28px;
+  }
+  .card{
+    background:var(--card);
+    border-radius:14px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  h3{
+    margin:0 0 12px 0;
+    font-family:'Playfair Display', serif;
+    font-size:20px;
+  }
+  p { margin:6px 0; opacity:0.95; font-size:14px; }
+
+  /* couple profiles */
+  .profiles{
+    display:flex;
+    gap:12px;
+  }
+  .profile{
+    flex:1;
+    text-align:center;
+  }
+  .profile img{
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+  }
+  .name{
+    margin-top:8px;
+    font-weight:700;
+    font-family:'Playfair Display', serif;
+    font-size:16px;
+  }
+  .role{font-size:13px; opacity:0.9;}
+
+  /* schedule table */
+  table{width:100%; border-collapse:collapse; margin-top:6px}
+  td,th{padding:8px 6px; border-bottom:1px dashed rgba(255,255,255,0.03); text-align:left; font-size:14px}
+
+  /* maps + qr column */
+  .right-col{
+    position:sticky;
+    top:20px;
+    align-self:start;
+  }
+  .map{
+    width:100%;
+    height:200px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+
+  .map iframe{width:100%; height:100%; border:0; display:block}
+
+  .btn{
+    display:inline-block;
+    padding:10px 14px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    cursor:pointer;
+    margin-top:10px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--accent);
+    border:1px solid rgba(255,255,255,0.03);
+  }
+
+  /* gallery */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:8px;
+    margin-top:10px;
+  }
+  .gallery img{
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform .25s ease;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .gallery img:hover{transform:scale(1.03)}
+    #desktop-date{
+        display: inline-block;
+    }
+    #mobile-date{
+        display: none;
+    }
+  /* modal */
+  .modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    place-items:center;
+    background:rgba(0,0,0,0.6);
+    z-index:1000;
+  }
+
+  .modal.open{display:grid}
+  .modal .box{
+    width:90%;
+    max-width:900px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35));
+    padding:16px;
+    border-radius:12px;
+  }
+  .modal img{width:100%; height:auto; border-radius:8px}
+
+  /* music control */
+  .music-control{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-top:10px;
+  }
+  .music-control button{background:transparent; border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:10px; color:var(--accent); cursor:pointer}
+
+  /* footer / RSVP strip */
+  .rsvp{
+    text-align:center;
+    padding:18px;
+    border-radius:12px;
+    margin-top:22px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.1));
+  }
+
+  /* small screens */
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr; }
+    .right-col{position:static}
+    .hero-right{order:3; width:100%; flex:1 1 auto}
+    .hero-right img{
+        width: 100%;
+        height: 100%;
+    }
+     .wrap{
+        max-width:var(--maxw);
+        margin: 0;
+        padding: 10px;
+        position:relative;
+    }
+    .title{
+        font-size:30px;
+        display: block;
+        text-align: center;
+    }
+    .logo{
+        display: none;
+    }
+    .sub{
+        display: block;
+        text-align: center;
+    }
+    .gallery img{
+        width:100%;
+        height:auto;
+        object-fit:cover;
+        border-radius:8px;
+        cursor:pointer;
+        transition:transform .25s ease;
+        border:1px solid rgba(255,255,255,0.03);
+    }
+    .profile img{
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:12px;
+        display:block;
+    }
+    #desktop-date{
+        display: none;
+    }
+    #mobile-date{
+        display:block;
+        text-align: center;
+    }
+  }
+
+  /* little decorative heart */
+  .heart{
+    display:inline-block;
+    transform:translateY(2px);
+    margin-left:6px;
+    color:#ffd9d9;
+    font-size:18px;
+  }
+
+  /* subtle floating motion */
+  .float{
+    animation: floaty 6s ease-in-out infinite;
+  }
+  /* ==================================== */
+/* QR MỪNG CƯỚI */
+/* ==================================== */
+
+.qr-section {
+    background-color: var(--secondary-color);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.qr-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Rất quan trọng cho responsive */
+}
+
+.qr-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; /* Độ rộng cố định */
+}
+
+.qr-card h3 {
+    font-family: var(--font-main); /* Dùng font chữ đơn giản hơn */
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.qr-image-wrapper {
+    margin: 15px 0;
+    padding: 5px;
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.qr-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+.account-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 8px 0 2px 0;
+}
+
+.account-number {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 600px) {
+    .qr-card {
+        width: 90%; /* Chiếm gần hết màn hình */
+        margin-bottom: 20px;
+    }
+    .qr-container {
+        gap: 15px;
+    }
+}
+  @keyframes floaty{
+    0%{ transform: translateY(0) }
+    50%{ transform: translateY(-8px) }
+    100%{ transform: translateY(0) }
+  }
+
+  /* small helper text */
+  .muted{opacity:0.85; font-size:13px}
+  .calendar {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background: #5c001a; /* đỏ mận */
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.calendar h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-name {
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.day {
+    background: rgba(255,255,255,0.15);
+    padding: 15px 0;
+    border-radius: 12px;
+    font-size: 16px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.day:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.special {
+    background: rgba(255, 200, 200, 0.3);
+    font-weight: bold;
+}
+
+/* Trái tim */
+.special .heart {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: heartbeat 1.5s infinite;
+}
+
+.special .heart::before,
+.special .heart::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.special .heart::before {
+    top: -11px;
+    left: 0;
+}
+
+.special .heart::after {
+    left: 11px;
+    top: 0;
+}
+
+/* Hiệu ứng tim đập */
+@keyframes heartbeat {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.3) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}

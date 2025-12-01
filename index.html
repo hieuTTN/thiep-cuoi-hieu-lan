@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Thiệp cưới — Trân Hiếu & Lan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="snow" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></canvas>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="logo">Hiếu & Lan</div>
+      <div class="title">Trân Hiếu <span style="font-weight:400">&</span> Thanh Lan</div>
+      <div class="sub">Kính mời bạn đến chung vui cùng gia đình</div>
+
+      <div class="date-pill float" id="desktop-date">
+        20 - 21 / 12 / 2025 — (Âm lịch: 1 - 2 / 11 / 2025)
+      </div>
+
+      <div class="date-pill float" id="mobile-date">
+        <div>20 - 21 / 12 / 2025</div>(Âm lịch: 1 - 2 / 11 / 2025)
+      </div>
+
+      <p style="margin-top:12px; max-width:520px" class="muted">
+        Buổi lễ: Lễ dạm ngõ & Tiệc cưới. <strong>Vui lòng xem bản đồ ở bên phải</strong> để đến địa điểm nhà trai / nhà gái.
+      </p>
+
+      <div style="margin-top:14px">
+        <a class="btn" id="openMapGroom">Bản đồ nhà trai</a>
+        <a class="btn" id="openMapBride">Bản đồ nhà gái</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img src="images/anh1.jpg" alt="Bride & Groom">
+    </div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h3>Thông tin lễ cưới</h3>
+        <table>
+          <tr><th>Thời gian</th><td>20/12/2025 (Lễ dạm ngõ) — 21/12/2025 (Tiệc cưới). Âm lịch: 1-2/11/2025</td></tr>
+          <tr><th>Nhà trai</th><td>Họ tên: Trần Hiếu — Địa chỉ: Thôn 10, Hòa Hậu, Xã Nam Lý, Tỉnh Ninh Bình</td></tr>
+          <tr><th>Nhà gái</th><td>Họ tên: Thanh Lan — Địa chỉ: Thôn đông nghĩa, xã Hải Hưng, tỉnh Ninh Bình</td></tr>
+          <tr><th>Liên hệ</th><td>Chú rể: 038.226.7161 - Cô dâu: 0332.547.888</td></tr>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Cô dâu & Chú rể</h3>
+        <div class="profiles">
+          <div class="profile">
+            <img src="images/anh3.jpg" alt="Bride">
+            <div class="name">Thanh Lan</div>
+            <div class="role">Cô dâu</div>
+          </div>
+          <div class="profile">
+            <img src="images/anh4.png" alt="Groom">
+            <div class="name">Trần Hiếu</div>
+            <div class="role">Chú rể</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Lịch trình chi tiết</h3>
+        <table>
+          <tr><th>Ngày</th><th>Sự kiện</th><th>Thời gian</th></tr>
+          <tr><td>20/12/2025</td><td>Xuất phát</td><td>07:05</td></tr>
+          <tr><td>20/12/2025</td><td>Lễ dạm ngõ (nhà gái)</td><td>08:00 - 8h50</td></tr>
+          <tr><td>20/12/2025</td><td>Xuất phát đón dâu</td><td>07:05</td></tr>
+          <tr><td>21/12/2025</td><td>Đón dâu</td><td>9h50</td></tr>
+          <tr><td>21/12/2025</td><td>Tiệc cưới (Nhà chú rể)</td><td>10:00</td></tr>
+        </table>
+
+        <div class="calendar">
+    <h2>Tháng 12 / 2025</h2>
+    <div class="calendar-grid">
+        <div class="day-name">T2</div>
+        <div class="day-name">T3</div>
+        <div class="day-name">T4</div>
+        <div class="day-name">T5</div>
+        <div class="day-name">T6</div>
+        <div class="day-name">T7</div>
+        <div class="day-name">CN</div>
+
+        <!-- Ngày bắt đầu tháng 12/2025: Thứ 2, nên không cần ô trống -->
+
+        <!-- Dòng 1 -->
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day">7</div>
+
+        <!-- Dòng 2 -->
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">11</div>
+        <div class="day">12</div>
+        <div class="day">13</div>
+        <div class="day">14</div>
+
+        <!-- Dòng 3 -->
+        <div class="day">15</div>
+        <div class="day">16</div>
+        <div class="day">17</div>
+        <div class="day">18</div>
+        <div class="day">19</div>
+
+        <!-- Hai ngày được khoanh trái tim -->
+        <div class="day special">
+            <span>20</span>
+            <div class="heart"></div>
+        </div>
+        <div class="day special">
+            <span>21</span>
+            <div class="heart"></div>
+        </div>
+
+        <!-- Dòng 4 -->
+        <div class="day">22</div>
+        <div class="day">23</div>
+        <div class="day">24</div>
+        <div class="day">25</div>
+        <div class="day">26</div>
+        <div class="day">27</div>
+        <div class="day">28</div>
+
+        <!-- Dòng 5 -->
+        <div class="day">29</div>
+        <div class="day">30</div>
+        <div class="day">31</div>
+    </div>
+</div>
+
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Album ảnh</h3>
+        <div class="gallery" id="gallery">
+          <img src="images/anh8.jpg" alt="Album1">
+          <img src="images/anh6.jpg" alt="Album2">
+          <img src="images/anh7.jpg" alt="Album3">
+        </div>
+        <p class="muted" style="margin-top:8px">Chạm vào ảnh để phóng to.</p>
+      </div>
+
+    </div>
+
+    <aside class="right-col">
+      <div class="card">
+        <h3>Bản đồ — Nhà trai</h3>
+        <div class="map" id="mapGroomWrap">
+          <iframe id="mapGroom" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3737.286124754651!2d106.1647518114916!3d20.494493705833683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135e78a09f54973%3A0xe23592981615760!2zR8OgIHbhu4t0IHRy4bqnbiB0aMO0bmc!5e0!3m2!1svi!2s!4v1764579603686!5m2!1svi!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <p class="muted">Nhấn "Mở bản đồ" để xem chi tiết / chỉ đường.</p>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3>Bản đồ — Nhà gái</h3>
+        <div class="map" id="mapBrideWrap">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d936.0415568389586!2d106.31296152474573!3d20.210412415170552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31360f001dd4512b%3A0xfad7cd90b101e6c4!2zQ8OieSBn4bqhbyBIxrBuZyBOZ2jEqWE!5e0!3m2!1svi!2s!4v1764581698753!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <section class="section qr-section" data-aos="fade-up">
+            <h2>💌 Lời Chúc & Tiền Mừng</h2>
+            <p class="muted">
+                Quý khách có thể gửi lời chúc hoặc tiền mừng đến Cô Dâu và Chú Rể qua mã QR bên dưới.
+            </p>
+
+            <div class="qr-container">
+                <div class="qr-card">
+                    <h3>Chú Rể</h3>
+                    <div class="qr-image-wrapper">
+                        <img id="qrGroom" src="images/qr-hieu.jpg" alt="QR Chú Rể" class="qr-img">
+                    </div>
+                    <a class="btn download-btn" href="images/qr-hieu.jpg" download="QR_Chu_Re_Ten_A">Tải QR</a>
+                </div>
+
+                <div class="qr-card">
+                    <h3>Cô Dâu</h3>
+                    <div class="qr-image-wrapper">
+                        <img id="qrBride" src="images/qr-lan.jpg" alt="QR Cô Dâu" class="qr-img">
+                    </div>
+                    <a class="btn download-btn" href="images/qr-lan.jpg" download="QR_Co_Dau_Ten_B">Tải QR</a>
+                </div>
+            </div>
+        </section>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3>Ghi chú</h3>
+        <p class="muted">Vui lòng mặc trang phục lịch sự. Nếu cần hỗ trợ, gọi số: 
+            <br>Chú rể: 038.226.7161
+            <br>Cô dâu: 0332.547.888
+        </p>
+      </div>
+
+    </aside>
+  </div>
+
+  <div class="rsvp card">
+    <div style="font-family:'Playfair Display', serif; font-size:18px">Mong được đón tiếp quý khách <span class="heart">❤</span></div>
+    <div class="muted" style="margin-top:8px">Địa điểm: Thông tin chi tiết có trong phần bản đồ. Trân trọng!</div>
+  </div>
+
+</div>
+
+<!-- Modal image / map / qr -->
+<div id="modal" class="modal" role="dialog" aria-hidden="true">
+  <div class="box" id="modalBox">
+    <button id="closeModal" class="btn" style="float:right; margin-bottom:8px">Đóng</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
