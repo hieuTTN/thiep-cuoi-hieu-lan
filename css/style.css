@@ -1080,7 +1080,8 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-         transform: translateY(-10vh);
+        transform: translateY(-10vh);
+        padding-top: 10vh;
     }
 
     /* Căn giữa text và nút */
@@ -1205,4 +1206,11 @@
     .countdown-title {
         font-size: 1.2em;
     }
+}
+
+
+#modalContent img{
+    object-fit: cover;
+    height: 100%;
+    width: auto;
 }
