@@ -1214,3 +1214,96 @@
     height: 100%;
     width: auto;
 }
+.text-center{
+    display: block;
+    text-align: center;
+}
+
+
+/* ==================================== */
+/* TIỀN MỪNG (DROPDOWN) */
+/* ==================================== */
+
+/* Nút Bật/Tắt */
+.tienmung-toggle-btn {
+    /* Đảm bảo nút nổi bật */
+    margin: 15px auto 25px;
+    background: var(--accent);
+    color: #2b0606; 
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+/* Biểu tượng mũi tên */
+.tienmung-toggle-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s;
+}
+
+/* Xoay mũi tên khi nội dung mở */
+.tienmung-toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* Container chứa QR - tạo hiệu ứng dropdown */
+.tienmung-content {
+    /* Quan trọng: Ẩn nội dung và tạo hiệu ứng trượt */
+    max-height: 0;
+    overflow: hidden; 
+    transition: max-height 0.5s ease-out; /* Hiệu ứng đẹp */
+}
+
+/* Thêm khoảng cách khi nội dung mở */
+.tienmung-content.open {
+    max-height: 1000px; /* Đặt giá trị đủ lớn để chứa toàn bộ nội dung */
+    margin-top: 15px; 
+}
+
+/* Kiểu dáng chung cho QR */
+.qr-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
+}
+
+.qr-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 250px; /* Linh hoạt trên desktop */
+    max-width: 300px;
+    min-width: 250px;
+}
+
+.qr-card h3 {
+    color: #8b0000; /* Màu đỏ đậm cho tiêu đề */
+    margin-top: 5px;
+}
+
+.qr-image-wrapper {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.qr-img {
+    width: 100%;
+    max-width: 200px; /* Kích thước tối đa cho QR */
+    height: auto;
+}
+
+.account-info {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}

@@ -328,4 +328,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Bắt đầu đếm ngược
     updateCountdown(); 
     countdownInterval = setInterval(updateCountdown, 1000); 
+
+
+
+
+
+
+
+
+
+
+
+    // --- LOGIC MỞ/ĐÓNG THÔNG TIN TIỀN MỪNG (NEW) ---
+    const tienmungToggleBtn = document.getElementById('tienmungToggle');
+    const tienmungContent = document.getElementById('tienmungContent');
+
+    if (tienmungToggleBtn && tienmungContent) {
+        tienmungToggleBtn.addEventListener('click', () => {
+            // Thay đổi trạng thái mở/đóng của nội dung
+            tienmungContent.classList.toggle('open');
+            // Thay đổi trạng thái của nút
+            tienmungToggleBtn.classList.toggle('active');
+
+            // Cập nhật text của nút (tùy chọn)
+            const icon = tienmungToggleBtn.querySelector('i');
+            if (tienmungContent.classList.contains('open')) {
+                tienmungToggleBtn.innerHTML = 'Đóng hộp quà mừng cưới <i class="fas fa-chevron-up"></i>';
+            } else {
+                tienmungToggleBtn.innerHTML = 'Gửi mừng cưới <i class="fas fa-chevron-down"></i>';
+            }
+        });
+    }
 });
